@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FishOnLine.MainPage"
+             xmlns:pages="clr-namespace:FishOnLine;assembly=FishOnLine"   
+             xmlns:local="clr-namespace:FishOnline.AndroidOption;assembly=FishOnLine"   
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             BackgroundImage="wallpaper1.jpg"
+             Title="FishOnLine" Appearing="appearing"
+             >
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Il mio ordine" 
+                     Icon="ordine.png" 
+                     Clicked="toolordine_Clicked">
+        </ToolbarItem>
+        <ToolbarItem Text="Impostazioni" 
+                     Icon="setting.png" 
+                     Clicked="impostazioni_Clicked">>
+        </ToolbarItem>
+        
+        <ToolbarItem
+            Icon="exit.png"  
+            Text="Esci"
+            Clicked="Esci_Clicked">
+        </ToolbarItem>
+       
+    </ContentPage.ToolbarItems>
+
+    <StackLayout Padding="5" x:Name="stk" VerticalOptions="FillAndExpand"
+                     HorizontalOptions="FillAndExpand"
+                     Orientation="Vertical">
+        <ListView  ItemSelected="selected_item"  x:Name="lstViewMenu" SeparatorVisibility="Default" >
+            <ListView.ItemTemplate >
+                <DataTemplate >
+                    <ViewCell    Tapped="cell_tapped"  >
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition Height="20"></RowDefinition>
+                                <RowDefinition Height="40"></RowDefinition>
+                                <RowDefinition Height="10"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"></ColumnDefinition>
+                                <ColumnDefinition Width="180"></ColumnDefinition>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Text="Portata"></Label>
+                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding nome}" Style="{StaticResource MyNameMenuStyle}"></Label>
+                            <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan ="2" Orientation="Horizontal">
+                              <Label  Text="Um."></Label>
+                              <Label  Text="{Binding um}" Style="{StaticResource MyMenuStyle}"></Label>
+                              <Label  Text="Prezzo"></Label>
+                                <Label  Text="{Binding prezzo,StringFormat='{0:N4}'}" Style="{StaticResource MyMenuStyle}"></Label>
+                            </StackLayout>
+                            <Label Grid.Row="2" Grid.Column ="0" Grid.ColumnSpan="2" IsVisible="{Binding offerta}" BackgroundColor="Yellow"  VerticalTextAlignment="Center"  HorizontalTextAlignment="Center" Text="OFFERTA" Style="{StaticResource MyMenuOffertaStyle}"></Label>
+                            <Button Grid.Row="2" Grid.Column="2" CommandParameter="{Binding id}"  x:Name="btOrdina" Clicked="btOrdina_Clicked" Text="Ordina" Style="{StaticResource MyButtonOrd}"></Button>
+                            <Image  Source="{Binding stream_foto}"   Grid.Row="0" Grid.RowSpan="2"  Grid.Column="2" />
+                            <Image Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"  Source="{StaticResource imageSeparator}"  HorizontalOptions="CenterAndExpand" Aspect="Fill"    VerticalOptions="Start"  />
+                            
+                        </Grid>
+                        
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+           
+        </ListView>
+
+    </StackLayout>
+
+
+</ContentPage>
+

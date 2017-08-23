@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:FishOnLine;assembly=FishOnLine"   
+             xmlns:local="clr-namespace:FishOnline.AndroidOption;assembly=FishOnLine"  
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             x:Class="FishOnLine.OrderPage"
+             Title="Il mio ordine">
+    <ContentPage.Content>
+        <local:GradientColorStack VerticalOptions="FillAndExpand"
+                     HorizontalOptions="FillAndExpand"
+                     Orientation="Vertical" Padding="3" StartColor="LightBlue" EndColor="White" >
+         <StackLayout Orientation="Vertical" VerticalOptions= "FillAndExpand"  >
+                <StackLayout Orientation="Vertical" x:Name="stcSelMenu" >
+                    <Label FontSize="Medium" FontAttributes="Bold" Text="Portata corrente" HorizontalTextAlignment="Center" TextColor="White" BackgroundColor="DarkBlue" ></Label>
+            <Grid  >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                
+                <Label Grid.Row="0" Grid.Column="0" Text="Portata" Style="{StaticResource MyOrdine}"></Label>
+                    <Label x:Name="lblPortata" Grid.Row="0" Grid.Column="1" FontAttributes="Bold" Text="" Style="{StaticResource MyOrdineEl}" Grid.ColumnSpan="3"></Label>
+                <Label Grid.Row="1" Grid.Column="0" Text="Descrizione"   Style="{StaticResource MyOrdine}"></Label>
+                    <Label x:Name="lblDescrizione" Grid.Row="1" Grid.Column="1"  Text="" FontSize= "Small" Grid.ColumnSpan="3"></Label>
+                </Grid>
+                <StackLayout  Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End"   >  
+                    <Label Text="Um." VerticalTextAlignment="End" Style="{StaticResource MyOrdine}"></Label>
+                    <Label  VerticalTextAlignment="End" x:Name="lblUm"  Text="" Style="{StaticResource MyOrdineEl}"></Label>
+                    <Label  Text="Prz." VerticalTextAlignment="End" Style="{StaticResource MyOrdine}"></Label>
+                    <Label  WidthRequest="80" VerticalTextAlignment="End" x:Name="lblPrezzo"  Style="{StaticResource MyOrdineEl}"></Label>
+                    <Label  Text="Qtà." VerticalTextAlignment="End" Style="{StaticResource MyOrdine}"></Label>
+                    <Entry VerticalOptions="End"  WidthRequest="80"     x:Name="txtQta" TextChanged="txtQta_TextChanged"  Keyboard="Numeric" Style="{StaticResource MyOrdineText}" />
+                    <Button WidthRequest="50"  x:Name="btOk"  IsEnabled="False" Clicked="btOk_Clicked"  Text="OK"  BackgroundColor="DarkBlue"  FontAttributes="Bold" TextColor="White"/>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Orientation="Vertical" Padding="3" VerticalOptions="FillAndExpand">
+                <Label Text="Ordini nella lista" TextColor="White" BackgroundColor="DarkBlue" FontSize="Medium" FontAttributes="Bold" HorizontalTextAlignment="Center"></Label>
+                <ListView   x:Name="lstOrders" RowHeight="100"  ItemSelected="lstOrders_ItemSelected"   >
+                    <ListView.ItemTemplate  >
+                        <DataTemplate>
+                            <ViewCell  Appearing="Cell_OnAppearing">
+                                <Grid Padding="5">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="20"></RowDefinition>
+                                            <RowDefinition Height="30"></RowDefinition>
+                                            <RowDefinition Height="20"></RowDefinition>
+                                            <RowDefinition Height="30"></RowDefinition>
+                           
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="30"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                    <StackLayout Orientation="Horizontal" Grid.RowSpan="3"  Grid.Row="0" Grid.Column="0" >
+                                        <Label  Text="{Binding riga}"></Label>
+                                    </StackLayout>
+                                        <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2">
+                                            <Label  Text="Portata" ></Label>
+                                            <Label  Text="{Binding nome}" TextColor="#0066ff" FontAttributes="Bold" ></Label>
+                                        </StackLayout>
+                                    <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" >
+                                            <Label  Text="Um."></Label>
+                                            <Label  Text="{Binding um}" TextColor="#0066ff" FontAttributes="Bold" ></Label>
+                                            <Label  Text="Prezzo"></Label>
+                                            <Label  WidthRequest="50"   Text="{Binding prezzo,StringFormat='{0:N4}'}" TextColor="#0066ff" FontAttributes="Bold"  ></Label>
+                                            <Label  Text="Qtà"></Label>
+                                            <Label WidthRequest="50" Text="{Binding qta}" TextColor="#0066ff" FontAttributes="Bold" ></Label>
+                                    </StackLayout>
+                                     <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="End" >
+                                            <Label  Text="Totale" FontSize="Medium" TextColor="#0066ff"></Label>
+                                            <Label  Text="{Binding totale, StringFormat='{0:N2}'}" FontSize="Medium" TextColor="#0066ff" HorizontalOptions ="End" ></Label>
+                                        </StackLayout>  
+                                        
+                                    </Grid>
+                                    
+                                    <ViewCell.ContextActions>
+                                        <MenuItem IsDestructive="True"   Text="Elimina" Clicked="Elimina_riga_Clicked" CommandParameter="{Binding .}"  />
+                                </ViewCell.ContextActions>
+                                
+                            </ViewCell>
+                            
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand"    >
+                        <Button IsEnabled="False" Clicked="btConfOrd_Clicked" HorizontalOptions="Start" VerticalOptions="Center" x:Name="btConfOrd" Text="Conferma" Style="{StaticResource MyButtonOrd}"></Button> 
+                        <Label VerticalOptions="Center" Text="Totale generale" FontSize="Medium" TextColor="#0066ff" HorizontalOptions="End" ></Label>
+                        <Label VerticalOptions="Center" x:Name="lblTotGen" FontSize="Medium" TextColor="#0066ff" HorizontalOptions="End"  ></Label>
+                </StackLayout>
+            </StackLayout>
+            </StackLayout>
+        </local:GradientColorStack>
+       
+        
+      
+    </ContentPage.Content>
+</ContentPage>

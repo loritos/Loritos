@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FishOnLine.App">
+    
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--main page-->
+        <Style x:Key="MyNameMenuStyle" TargetType="Label" >
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <OnPlatform.iOS>16</OnPlatform.iOS>
+                            <OnPlatform.Android>16</OnPlatform.Android>
+                            <OnPlatform.WinPhone>24</OnPlatform.WinPhone>
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="TextColor" Value="#0066ff"/>
+            </Style>
+            <Style x:Key="MyMenuOffertaStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#008060"/>
+                <Setter Property="FontFamily"  Value="Verdana"></Setter>
+                <Setter Property="FontSize">
+                    <Setter.Value>16</Setter.Value>
+                </Setter>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+            <Style x:Key="MyMenuStyle" TargetType="Label" >
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <OnPlatform.iOS>14</OnPlatform.iOS>
+                            <OnPlatform.Android>16</OnPlatform.Android>
+                            <OnPlatform.WinPhone>18</OnPlatform.WinPhone>
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="TextColor" Value="#538cc6"/>
+            </Style>
+            <Style x:Key="MyButtonStyle" TargetType="Button" >
+                <Setter Property="BorderRadius">
+                    <Setter.Value>
+                        <OnPlatform x:TypeArguments="x:Int32">
+                            <OnPlatform.Android>2</OnPlatform.Android>
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="BackgroundColor" Value="#80ccff"></Setter>
+            </Style>
+            <Style x:Key="MyLabelSetting" TargetType="Label">
+                <Setter Property="TextColor" Value="#0066ff"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+            <Style x:Key="MyButtonOrd" TargetType="Button">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontFamily"  Value="Verdana"></Setter>
+                <Setter Property="FontSize">
+                    <Setter.Value>16</Setter.Value>
+                </Setter>
+                <Setter Property="BackgroundColor" Value="DarkBlue"></Setter>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+              <!--pagina ordine-->
+            <Style x:Key="MyOrdine" TargetType="Label">
+                <Setter Property="FontFamily"  Value="Verdana"></Setter>
+                <Setter Property="FontSize">
+                    <Setter.Value>14</Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="MyOrdineEl" TargetType="Label">
+                <Setter Property="FontFamily"  Value="Verdana"></Setter>
+                <Setter Property="TextColor" Value="#0066ff"/>
+                <Setter Property="FontSize">
+                    <Setter.Value>16</Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="MyOrdineText" TargetType="Entry">
+                <Setter Property="FontFamily"  Value="Verdana"></Setter>
+                <Setter Property="TextColor" Value="Blue"/>
+                <Setter Property="FontSize">
+                    <Setter.Value>16</Setter.Value>
+                </Setter>
+            </Style>
+            <OnPlatform x:Key="imageSeparator" 
+                      x:TypeArguments="ImageSource"
+                      iOS="separator.png"
+                      Android="separator.png"
+                      WinPhone="separator.png" />
+        </ResourceDictionary>
+        
+    </Application.Resources>
+</Application>

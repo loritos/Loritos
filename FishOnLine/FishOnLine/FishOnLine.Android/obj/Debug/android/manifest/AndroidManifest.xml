@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="FishOnLine.Droid" android:versionCode="1" android:versionName="1.0">
+  <!--suppress UsesMinSdkAttributes-->
+  <uses-sdk android:minSdkVersion="15" />
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.LOCATION_HARDWARE" />
+  <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+  <uses-permission android:name="android.permission.VIBRATE" />
+  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+  <application android:label="FishOnLine" android:icon="@drawable/icon" android:name="android.support.multidex.MultiDexApplication" android:allowBackup="true" android:debuggable="true">
+    <service android:name="md522949013235447f4b7e6230729f4e698.SeviceMessage"></service>
+    <receiver android:name="md522949013235447f4b7e6230729f4e698.DeleteNotifica">
+      <intent-filter>
+        <action android:name="YES_ACTION" />
+        <action android:name="NO_ACTION" />
+      </intent-filter>
+    </receiver>
+    <activity android:configChanges="orientation|screenSize" android:icon="@drawable/icon" android:label="FishOnLine" android:theme="@style/MainTheme" android:name="md5775086b8338f5ef7d1d7ad7a3ff55680.MainActivity" />
+    <activity android:noHistory="true" android:theme="@style/Theme.Splash" android:name="md5775086b8338f5ef7d1d7ad7a3ff55680.SplashActivity">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+    <receiver android:enabled="true" android:label="Toasts Broadcast Receiver" android:name="md52d189d64b7b0ac40b59b56928c06114b.AlarmHandler" />
+    <activity android:name="md511f2fcf685a3847eee0baf2c814b548d.MediaPickerActivity" />
+    <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="FishOnLine.Droid.mono.MonoRuntimeProvider.__mono_init__" />
+    <!--suppress ExportedReceiver-->
+    <receiver android:name="mono.android.Seppuku">
+      <intent-filter>
+        <action android:name="mono.android.intent.action.SEPPUKU" />
+        <category android:name="mono.android.intent.category.SEPPUKU.FishOnLine.Droid" />
+      </intent-filter>
+    </receiver>
+  </application>
+  <meta-data android:name="android.support.VERSION" android:value="25.3.1" />
+</manifest>

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:FishOnLine;assembly=FishOnLine"   
+             x:Class="FishOnLine.Setting"
+             BackgroundImage="wallpaper1.jpg"
+             Title="Impostazioni">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" VerticalOptions="Start" >
+        <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
+                <Grid Padding="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"></RowDefinition>
+                        <RowDefinition Height="35"></RowDefinition>
+                        <RowDefinition Height="35"></RowDefinition>
+                        <RowDefinition Height="35"></RowDefinition>
+                        <RowDefinition Height="35"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+             <Label Grid.Row="0" Grid.Column="0" Text="E-mail *" Style="{StaticResource MyLabelSetting}"  />
+             <Entry Grid.Row="0" Grid.Column="1" x:Name="emailUtente" Keyboard="Email" Text="" TextChanged="emailUtente_TextChanged" BackgroundColor="AliceBlue" />
+            <Label Grid.Row="1" Grid.Column="0" Text="Password *" Style="{StaticResource MyLabelSetting}"  />
+             <Entry Grid.Row="1" Grid.Column="1" IsPassword="True" x:Name="passUtente" Keyboard="Text" Text=""  BackgroundColor="AliceBlue" />
+             <Label Grid.Row="2" Grid.Column="0" Text="Conferma la password *" Style="{StaticResource MyLabelSetting}"  />
+             <Entry Grid.Row="2" Grid.Column="1" IsPassword="True" x:Name="passConf" Keyboard="Text" Text=""  BackgroundColor="AliceBlue" />
+              <Label Grid.Row="3" Grid.Column="0"  Text="N° di telefono " Style="{StaticResource MyLabelSetting}"  />
+             <Entry Grid.Row="3" Grid.Column="1" x:Name="numberTel" Keyboard="Telephone" Text="" BackgroundColor="AliceBlue"   />
+              <Label  Grid.Row="4" Grid.Column="0" Text="Nome utente *" Style="{StaticResource MyLabelSetting}"   />
+               <Entry Grid.Row="4" Grid.Column="1" x:Name="nomeUtente" Text="" TextChanged="nomeUtente_TextChanged" BackgroundColor="AliceBlue" />
+             </Grid>
+            </StackLayout>
+
+        <StackLayout VerticalOptions="Start"
+                     HorizontalOptions="FillAndExpand"
+                     Orientation="Vertical" Padding="5">
+
+                
+                <Button Text="Registrati" Clicked="registra_clicked" BorderColor="Black"   x:Name="btRegistra" IsEnabled="true"  Style="{StaticResource MyButtonStyle}"  />
+                <Button Text="Aggiorna dati" Clicked="salva_clicked" BorderColor="Black"   x:Name="btsalva" IsEnabled="false"  Style="{StaticResource MyButtonStyle}"  />
+                <Button Text="Cancellati" Clicked="cancella_clicked" BorderColor="Black" x:Name="btCancella" IsEnabled="true"  Style="{StaticResource MyButtonStyle}" />
+        </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
